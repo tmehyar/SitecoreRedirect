@@ -1,6 +1,6 @@
 
 
-Simple redirect module for the Sitecore !0.4. It has the following options for the redirect
+Simple redirect module for the Sitecore 10.4. It has the following options for the redirect
 <ol>
 	<li>Sitecore Internal Items Redirect</li>
 	<li>Regex Options</li>
