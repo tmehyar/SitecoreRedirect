@@ -1,9 +1,8 @@
 using Sitecore.Data;
-using System;
 
 namespace Sitecore.Scientist.Feature.Redirects
 {
-	public class Templates
+    public class Templates
 	{
 		public Templates()
 		{

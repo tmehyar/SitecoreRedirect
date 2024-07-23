@@ -1,7 +1,9 @@
-﻿using Sitecore.Data;
+﻿using Sitecore.Annotations;
+using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Data.Managers;
 using Sitecore.Data.Templates;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Resources.Media;
 using Sitecore.Web;
 using System.Linq;
@@ -10,11 +12,11 @@ namespace Sitecore.Scientist.Feature.Redirects.Extensions
 {
     public static class MediaItemExtensions
     {
-        public static string GetMediaUrl(this MediaItem mediaItem, MediaUrlOptions options = null)
+        public static string GetMediaUrl(this MediaItem mediaItem, MediaUrlBuilderOptions options = null)
         {
             if (options == null)
             {
-                options = new MediaUrlOptions();
+                options = new MediaUrlBuilderOptions();
             }
             string mediaUrl = MediaManager.GetMediaUrl(mediaItem, options);
             mediaUrl = (mediaUrl.Contains("://") ? mediaUrl : StringUtil.EnsurePrefix('/', mediaUrl));

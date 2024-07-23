@@ -1,8 +1,9 @@
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
-using Sitecore.Scientist.Feature.Redirects.Extensions;
 using Sitecore.Links;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Pipelines.HttpRequest;
+using Sitecore.Scientist.Feature.Redirects.Extensions;
 using Sitecore.Sites;
 using Sitecore.StringExtensions;
 using Sitecore.Web;
@@ -30,7 +31,7 @@ namespace Sitecore.Scientist.Feature.Redirects.Pipelines.HttpRequestBegin
         {
             get
             {
-                return string.Format("{0}AllRedirectMappings-{1}-{2}-{3}", "Scientist-Redirect-", Context.Database.Name, Context.Site.Name,Context.Language.Name);
+                return string.Format("{0}AllRedirectMappings-{1}-{2}-{3}", "Scientist-Redirect-", Context.Database.Name, Context.Site.Name, Context.Language.Name);
             }
         }
         protected virtual string GetRedirectUrl(Item redirectItem)
@@ -46,7 +47,7 @@ namespace Sitecore.Scientist.Feature.Redirects.Pipelines.HttpRequestBegin
                 else
                 {
                     SiteInfo siteInfo = Context.Site.SiteInfo;
-                    UrlOptions defaultOptions = UrlOptions.DefaultOptions;
+                    var defaultOptions = new ItemUrlBuilderOptions();
                     defaultOptions.Site = SiteContextFactory.GetSiteContext(siteInfo.Name);
                     defaultOptions.AlwaysIncludeServerUrl = true;
                     str = string.Concat(LinkManager.GetItemUrl(item.TargetItem, defaultOptions), (string.IsNullOrEmpty(item.QueryString) ? "" : string.Concat("?", item.QueryString)));
@@ -69,10 +70,17 @@ namespace Sitecore.Scientist.Feature.Redirects.Pipelines.HttpRequestBegin
         }
         public static string GetItemIdByPath(string path)
         {
-            var Item = Sitecore.Context.Database.SelectSingleItem(path);
-            if (Item != null)
+            try
             {
-                return Item.ID.ToString();
+                var Item = Sitecore.Context.Database.SelectSingleItem(path);
+                if (Item != null)
+                {
+                    return Item.ID.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error("RedirectItem error", ex, typeof(RedirectItem));
             }
 
             return string.Empty;
@@ -82,7 +90,7 @@ namespace Sitecore.Scientist.Feature.Redirects.Pipelines.HttpRequestBegin
         {
             get
             {
-                return string.Format("{0}ResolvedRedirect-{1}-{2}-{3}", "Scientist-Redirect-", Context.Database.Name, Context.Site.Name,Context.Language.Name);
+                return string.Format("{0}ResolvedRedirect-{1}-{2}-{3}", "Scientist-Redirect-", Context.Database.Name, Context.Site.Name, Context.Language.Name);
             }
         }
         protected virtual Redirect GetResolvedMapping(string ItemId)

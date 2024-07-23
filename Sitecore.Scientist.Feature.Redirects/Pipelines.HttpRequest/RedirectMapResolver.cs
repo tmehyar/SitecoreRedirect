@@ -1,7 +1,7 @@
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.Scientist.Feature.Redirects.Extensions;
 using Sitecore.Pipelines.HttpRequest;
+using Sitecore.Scientist.Feature.Redirects.Extensions;
 using Sitecore.Text;
 using Sitecore.Web;
 using System;

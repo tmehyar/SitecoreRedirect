@@ -8,7 +8,8 @@
     <AssemblyName>Sitecore.Scientist.Feature.Redirects</AssemblyName>
     <OutputType>Library</OutputType>
     <RootNamespace>Sitecore.Scientist.Feature.Redirects</RootNamespace>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -31,9 +32,11 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Users\Mirum\Desktop\Vel\Sitecore.Scientist.Feature.Redirects\Dependencies\Sitecore.Kernel.dll</HintPath>
+    <Reference Include="Sitecore.Annotations">
+      <HintPath>..\Dependencies\Sitecore.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\Dependencies\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web" />

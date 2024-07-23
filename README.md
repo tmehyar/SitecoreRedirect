@@ -1,6 +1,6 @@
 
 
-Simple redirect module for the Sitecore 9 and Sitecore 8. It has the following options for the redirect
+Simple redirect module for the Sitecore !0.4. It has the following options for the redirect
 <ol>
 	<li>Sitecore Internal Items Redirect</li>
 	<li>Regex Options</li>
@@ -14,7 +14,7 @@ It Supports 3 type of redirection
 </ol>
 How to Use the Redirect Module
 
-1. Download and install the Redirect Module from the market place.
+1. Clone this repo and add it to your solution as a project or as a DLL.
 2. Add these entry to your Site config file.
 
 redirectSettingsId="{23F429BA-9BBF-4FDD-9BCD-1E7E46A0D029}"
